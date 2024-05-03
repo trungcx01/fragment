@@ -136,7 +136,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public String countSongsByGenre() {
+
+    public List<String> countSongsByGenre() {
         Map<String, Integer> genreCount = new HashMap<>();
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor rs = sqLiteDatabase.rawQuery("SELECT genre, COUNT(id) AS count FROM songs GROUP BY genre", null);
@@ -154,12 +155,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Sort the list using lambda expression
         list.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
 
-        // Build a string from the sorted list
+        // Prepare the list of strings to be returned
         List<String> result = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : list) {
-            result.add(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
+            result.add(entry.getKey() + ": " + entry.getValue());
         }
 
-        return result.toString();
+        return result;
     }
 }

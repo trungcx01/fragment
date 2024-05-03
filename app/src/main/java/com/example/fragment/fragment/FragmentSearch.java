@@ -28,7 +28,7 @@ import java.util.List;
 
 public class FragmentSearch extends Fragment implements View.OnClickListener{
     private RecyclerView recyclerView;
-    private TextView tvTong;
+    private TextView tvTong, tv1, tv2, tv3, tv4;
     private Button btnSearch;
     private androidx.appcompat.widget.SearchView searchView;
     private EditText eFrom, eTo;
@@ -115,7 +115,8 @@ public class FragmentSearch extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         if (view == btnSearch){
-            List<String> list = Collections.singletonList(db.countSongsByGenre());
+            List<String> list = db.countSongsByGenre();
+
         }
     }
 }
