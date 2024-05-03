@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/yellow"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ca sĩ yêu thích"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/artistImage"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/mtp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/artistName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:text="Sơn Tùng MTP"/>
+
+        <TextView
+            android:id="@+id/artistInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingTop="4dp"
+            android:text="Âm thầm bên em"/>
+    </LinearLayout>
+
+</LinearLayout>
