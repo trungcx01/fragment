@@ -10,6 +10,7 @@ import com.example.fragment.model.Song;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -135,16 +136,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public Map<String, Integer> countSongsByGenre() {
+    public String countSongsByGenre() {
         Map<String, Integer> genreCount = new HashMap<>();
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor rs = sqLiteDatabase.rawQuery("SELECT genre, COUNT(id) AS count FROM songs GROUP BY genre", null);
-        while ((rs != null) && (rs.moveToNext())) {
+
+        while (rs != null && rs.moveToNext()) {
             String genre = rs.getString(0);
             int count = rs.getInt(1);
             genreCount.put(genre, count);
         }
         rs.close();
-        return genreCount;
+
+        // Create a list from elements of HashMap
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(genreCount.entrySet());
+
+        // Sort the list using lambda expression
+        list.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+
+        // Build a string from the sorted list
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : list) {
+            result.add(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
+        }
+
+        return result.toString();
     }
 }

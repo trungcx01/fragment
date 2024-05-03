@@ -23,6 +23,7 @@ import com.example.fragment.adapter.RecycleViewAdapter;
 import com.example.fragment.database.DatabaseHelper;
 import com.example.fragment.model.Song;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FragmentSearch extends Fragment implements View.OnClickListener{
@@ -90,6 +91,8 @@ public class FragmentSearch extends Fragment implements View.OnClickListener{
 
             }
         });
+
+        btnSearch.setOnClickListener(this);
     }
 
     private void initView(View view){
@@ -111,6 +114,8 @@ public class FragmentSearch extends Fragment implements View.OnClickListener{
     }
     @Override
     public void onClick(View view) {
-
+        if (view == btnSearch){
+            List<String> list = Collections.singletonList(db.countSongsByGenre());
+        }
     }
 }
